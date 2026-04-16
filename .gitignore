@@ -31,6 +31,10 @@ hatalar.txt
 # Test indirme klasorleri (urun kodu = 11 ile baslayan rakamlar)
 [0-9]*/
 
+# Dev helpers (commit etme)
+capture.py
+
+
 
 # Test dosyalari
 *.xlsx

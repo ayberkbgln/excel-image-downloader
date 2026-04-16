@@ -9,6 +9,10 @@ Excel dosyalarındaki URL linklerinden toplu resim indirme aracı. Modern koyu t
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="Excel Image Downloader" width="620">
+</p>
+
 ---
 
 ## ✨ Özellikler
