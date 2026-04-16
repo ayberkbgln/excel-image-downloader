@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime
+indirilen/
+*.log
+hatalar.txt
+
+# Test indirme klasorleri (urun kodu = 11 ile baslayan rakamlar)
+[0-9]*/
+
+
+# Test dosyalari
+*.xlsx
+!ornek.xlsx
