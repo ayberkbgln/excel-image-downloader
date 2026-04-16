@@ -2,33 +2,40 @@
 
 **[🇹🇷 Türkçe](#-türkçe)** • **[🇬🇧 English](#-english)**
 
-![Version](https://img.shields.io/badge/version-2.0-blue)
+![Version](https://img.shields.io/badge/version-3.0-blue)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
+![Languages](https://img.shields.io/badge/UI-TR%20%7C%20EN-orange)
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="Excel Image Downloader" width="620">
+  <img src="docs/screenshot.png" alt="Turkish UI" width="420">
+  <img src="docs/screenshot_en.png" alt="English UI" width="420">
 </p>
 
 ---
 
 ## 🇹🇷 Türkçe
 
-Excel dosyalarındaki URL linklerinden toplu resim indirme aracı. Modern koyu tema arayüz, paralel indirme, resume desteği ve canlı log ile.
+Excel dosyalarındaki URL linklerinden toplu resim indirme aracı. **TR / EN dil desteği**, modern koyu tema, paralel indirme, resume desteği ve drag-and-drop ile.
 
 > Excel'in içinde URL olarak duran binlerce resim linkini otomatik indirip, istersen her ürün için ayrı klasöre, istersen tek klasöre toplar.
 
 ### ✨ Özellikler
 
+- 🌐 **TR / EN dil desteği** — sağ üstten anlık değiştir (ayarın kaydedilir)
 - 🌙 **Modern koyu tema** — rahat göz için
 - ⚡ **Paralel indirme** — 1-32 thread slider ile ayarlanabilir
 - ↷ **Resume (kaldığı yerden devam)** — var olan dosyaları atlar
 - 📁 **İki mod:** her ürün ayrı klasöre **veya** hepsi tek klasöre
+- 📎 **Drag & Drop** — Excel'i sürükle bırak, otomatik yüklenir
 - ⏹ **Durdur butonu** — istediğin an temiz durur
 - 📊 **Canlı hız + ETA** — "15.3/sn • kalan ~2sa 14dk"
+- 📂 **Klasörü aç butonu** — indirme biter bitmez tek tıkla açılır
 - 📝 **Hata raporu** — başarısız URL'ler `hatalar.txt`'ye yazılır
 - 🔢 **3'lü canlı sayaç** — OK • ATLANAN • HATA
+- 💾 **Ayar hatırlama** — son kullanılan dosya, klasör, thread sayısı korunur
+- ℹ **About penceresi** — geliştirici iletişim linkleri
 - 🧵 **Büyük Excel desteği** — 100.000+ satır, `read_only` modla RAM yemez
 
 ### 🚀 Hızlı Başlangıç
@@ -59,6 +66,8 @@ pyinstaller --noconfirm --onefile --windowed ^
     --name "ResimIndirici" ^
     --icon=icon.ico ^
     --add-data "icon.ico;." ^
+    --hidden-import tkinterdnd2 ^
+    --collect-all tkinterdnd2 ^
     app.py
 ```
 
@@ -84,25 +93,14 @@ EXE → `dist/ResimIndirici.exe`
 
 ### 🎛️ Kullanım
 
-1. **Excel Dosyası:** `.xlsx` veya `.xlsm` seç
-2. **Çıktı Klasörü:** resimlerin ineceği yer (otomatik `indirilen` oluşur)
-3. **Paralel İndirme:** 10 thread genelde ideal (sunucuyu bunaltmaz)
+1. **Excel Dosyası:** `.xlsx` seç (veya sürükle-bırak)
+2. **Çıktı Klasörü:** resimlerin ineceği yer
+3. **Paralel İndirme:** 10 thread genelde ideal
 4. **Opsiyonlar:**
-   - ☑ **Var olan dosyaları atla** — yarıda kalınca tekrar çalıştır, kaldığı yerden devam eder
-   - ☐ **Tek klasöre indir** — hepsini çıktı klasörüne atar, alt klasör açmaz
+   - ☑ **Var olan dosyaları atla** — resume desteği
+   - ☐ **Tek klasöre indir** — hepsini tek yere toplar
 5. **▶ İNDİRMEYİ BAŞLAT**
-
-### 🔧 Dosya Adlandırma
-
-URL'deki `Product/` kelimesinden sonraki kısım dosya adı olur:
-
-```
-https://cdn.example.com/Uploads/Product/11680150_40400_2.jpg
-                               ↓
-                       11680150_40400_2.jpg
-```
-
-Eğer `Product/` yoksa URL'nin son kısmı alınır.
+6. Bittiğinde **📂 Klasörü Aç** butonu belirir
 
 ### 📊 Performans
 
@@ -119,7 +117,7 @@ Eğer `Product/` yoksa URL'nin son kısmı alınır.
 
 <details>
 <summary><b>"Windows SmartScreen bunu engelledi"</b></summary>
-EXE dijital imzalı değil. "Daha fazla bilgi" → "Yine de çalıştır" de. Kod açık, inceleyebilirsin.
+EXE dijital imzalı değil. "Daha fazla bilgi" → "Yine de çalıştır" de. Kod açık.
 </details>
 
 <details>
@@ -129,43 +127,42 @@ PyInstaller ile build edilen EXE'lerde false positive normaldir. İstisna ekleye
 
 <details>
 <summary><b>Tek klasör modunda resim sayısı az geliyor</b></summary>
-Aynı isimli dosyalar birbirinin üzerine yazıyor olabilir. "Tek klasör" kapalı, ürün koduyla klasörleme açık kalsın.
-</details>
-
-<details>
-<summary><b>Çok fazla hata alıyorum</b></summary>
-Thread sayısını düşür (10 → 5). Sunucu rate-limit uyguluyor olabilir.
+Aynı isimli dosyalar birbirinin üzerine yazar. "Tek klasör" kapalı kalsın.
 </details>
 
 ---
 
 ## 🇬🇧 English
 
-A bulk image downloader that extracts URLs from Excel files and downloads them. Modern dark UI, parallel downloads, resume support, and live logging.
+Bulk image downloader that extracts URLs from Excel files. **TR / EN UI**, modern dark theme, parallel downloads, resume support, and drag-and-drop.
 
-> Automatically downloads thousands of image URLs stored in Excel cells — either into per-product subfolders or a single folder.
+> Downloads thousands of image URLs from Excel cells — into per-product subfolders or a single folder.
 
 ### ✨ Features
 
-- 🌙 **Modern dark theme** — easy on the eyes
-- ⚡ **Parallel downloads** — adjustable 1-32 threads via slider
-- ↷ **Resume support** — skips already-downloaded files
+- 🌐 **TR / EN language switch** — toggle from the top-right, settings persist
+- 🌙 **Modern dark theme**
+- ⚡ **Parallel downloads** — 1-32 threads via slider
+- ↷ **Resume support** — skip already-downloaded files
 - 📁 **Two modes:** per-product subfolders **or** single flat folder
-- ⏹ **Stop button** — clean cancellation anytime
-- 📊 **Live speed + ETA** — "15.3/sec • ETA ~2h 14m"
-- 📝 **Error report** — failed URLs written to `hatalar.txt`
+- 📎 **Drag & Drop** — drop Excel file onto the app
+- ⏹ **Stop button** — clean cancellation
+- 📊 **Live speed + ETA**
+- 📂 **Open folder button** — one click after completion
+- 📝 **Error report** — failed URLs saved to `hatalar.txt`
 - 🔢 **Triple live counter** — OK • SKIPPED • FAILED
-- 🧵 **Large Excel support** — 100,000+ rows, `read_only` mode (low RAM)
+- 💾 **Settings memory** — remembers last file, folder, thread count
+- ℹ **About dialog** — developer contact links
+- 🧵 **Large Excel support** — 100,000+ rows, low-RAM `read_only` mode
 
 ### 🚀 Quick Start
 
 #### Option 1: Prebuilt EXE (Windows)
 
-1. Download the latest `ResimIndirici.exe` from [Releases](../../releases)
-2. Double-click to run
-3. No Python installation required ✅
+1. Download latest `ResimIndirici.exe` from [Releases](../../releases)
+2. Double-click to run — no Python required ✅
 
-> ⚠️ If Windows SmartScreen warns you: *"More info → Run anyway"*. The EXE isn't code-signed (false positive).
+> ⚠️ If SmartScreen warns you: *"More info → Run anyway"* (false positive).
 
 #### Option 2: Run from source
 
@@ -176,59 +173,15 @@ pip install -r requirements.txt
 python app.py
 ```
 
-#### Option 3: Build your own EXE
-
-```bash
-pip install -r requirements.txt
-python make_icon.py
-pyinstaller --noconfirm --onefile --windowed ^
-    --name "ResimIndirici" ^
-    --icon=icon.ico ^
-    --add-data "icon.ico;." ^
-    app.py
-```
-
-EXE → `dist/ResimIndirici.exe`
-
 ### 📋 Excel Format
 
-| Column A | Columns B, C, D, ... |
+| Column A | Columns B+ |
 |---|---|
-| Product code (becomes folder name) | Image URLs |
+| Product code (folder name) | Image URLs |
 
-**Example:**
-
-| Product Code | Photo 1 | Photo 2 | Photo 3 |
-|---|---|---|---|
-| 11680150005 | https://cdn.../11680150_1.jpg | https://cdn.../11680150_2.jpg | https://cdn.../11680150_3.jpg |
-| 11657262006 | https://cdn.../11657262_1.jpg | https://cdn.../11657262_2.jpg | |
-
-- First row is treated as header (skipped)
+- First row treated as header
 - Column A = folder name
-- Any cell starting with `http` from column B onward is downloaded
-- Empty cells are ignored
-
-### 🎛️ Usage
-
-1. **Excel File:** select a `.xlsx` or `.xlsm`
-2. **Output Folder:** destination (auto-creates `indirilen` if empty)
-3. **Parallel Downloads:** 10 threads is a good default (won't overload servers)
-4. **Options:**
-   - ☑ **Skip existing files** — rerun after interruption, resumes where it left off
-   - ☐ **Single folder mode** — all images into the output folder, no subfolders
-5. **▶ START DOWNLOAD**
-
-### 🔧 File Naming
-
-The part after `Product/` in the URL becomes the filename:
-
-```
-https://cdn.example.com/Uploads/Product/11680150_40400_2.jpg
-                               ↓
-                       11680150_40400_2.jpg
-```
-
-If `Product/` isn't in the URL, the last path segment is used.
+- Any cell starting with `http` is downloaded
 
 ### 📊 Performance
 
@@ -239,47 +192,23 @@ If `Product/` isn't in the URL, the last path segment is used.
 | 10,000 | 10 | ~20-30 min |
 | 100,000 | 15 | ~3-5 hours |
 
-*Depends on server speed and your internet connection.*
-
-### 🐛 Troubleshooting
-
-<details>
-<summary><b>"Windows SmartScreen blocked this"</b></summary>
-The EXE isn't digitally signed. Click "More info" → "Run anyway". The source is open — feel free to review it.
-</details>
-
-<details>
-<summary><b>Antivirus false positive</b></summary>
-PyInstaller-built EXEs are commonly flagged. Add an exception or build the EXE yourself from source.
-</details>
-
-<details>
-<summary><b>Fewer images in single-folder mode</b></summary>
-Same-named files overwrite each other. Keep "Single folder" unchecked to use per-product subfolders.
-</details>
-
-<details>
-<summary><b>Too many errors</b></summary>
-Lower the thread count (10 → 5). The server might be rate-limiting.
-</details>
-
 ---
 
 ## 🛠️ Tech Stack
 
-- **Python 3.8+**
-- **Tkinter** — GUI (stdlib)
-- **openpyxl** — Excel parsing
-- **concurrent.futures** — parallel downloads
-- **PyInstaller** — EXE build
-- **Pillow** — icon generation
+- Python 3.8+ · Tkinter · openpyxl · concurrent.futures · PyInstaller · Pillow · tkinterdnd2
 
 ## 📄 License
 
-MIT — use it, modify it, distribute it. See [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE)
 
-## 👤 Author
+## 👤 Developer
 
-**Ayberk Bağlan** — [@ayberkbgln](https://github.com/ayberkbgln)
+**Ayberk Bağlan**
 
-> Contributions, issues, and PRs are welcome. Leave a ⭐ if it helped you!
+- 🐙 GitHub: [@ayberkbgln](https://github.com/ayberkbgln)
+- 🐦 X / Twitter: [@yulewiz](https://x.com/yulewiz)
+- 💼 LinkedIn: [in/ayberkbaglan](https://www.linkedin.com/in/ayberkbaglan/)
+- ✉ Email: ayberkbaglan@gmail.com
+
+> Contributions, issues, and PRs welcome. Leave a ⭐ if it helped!

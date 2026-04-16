@@ -33,6 +33,8 @@ hatalar.txt
 
 # Dev helpers (commit etme)
 capture.py
+capture_en.py
+capture_about.py
 
 
 
